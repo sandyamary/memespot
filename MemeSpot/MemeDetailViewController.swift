@@ -12,7 +12,10 @@ import UIKit
 class MemeDetailViewController: UIViewController {
     
     var meme: Meme!
-    let appDelegateObject = UIApplication.shared.delegate as! AppDelegate
+    var totalAvailableMemes: Int!
+    var currentMemeIndex: Int!
+    var allMemes = [Meme]()
+    
     @IBOutlet var memeDetailImage: UIImageView!
     
     override func viewDidLoad() {
@@ -43,6 +46,41 @@ class MemeDetailViewController: UIViewController {
             }
         }
         self.present(controller, animated: true, completion: nil)
+    }
+    
+    @IBAction func showPreviousImage(_ sender: Any) {
+        if currentMemeIndex != 0 {
+            memeDetailImage.image = allMemes[currentMemeIndex - 1].memedImage
+            currentMemeIndex = currentMemeIndex - 1
+        }
+    }
+    
+    @IBAction func showNextImage(_ sender: Any) {
+        totalAvailableMemes = allMemes.count
+        if currentMemeIndex+1 != totalAvailableMemes {
+            memeDetailImage.image = allMemes[currentMemeIndex + 1].memedImage
+            currentMemeIndex = currentMemeIndex + 1
+        }
+    }
+    
+    
+    @IBAction func deleteMeme(_ sender: Any) {
+        deletePhotoFromMemes()
+        totalAvailableMemes = allMemes.count
+        if totalAvailableMemes == 0 {
+            self.navigationController?.popToRootViewController(animated: true)
+        } else if totalAvailableMemes == currentMemeIndex {
+            memeDetailImage.image = allMemes[currentMemeIndex - 1].memedImage
+            currentMemeIndex = currentMemeIndex - 1
+        } else {
+            memeDetailImage.image = allMemes[currentMemeIndex].memedImage
+        }
+    }
+    
+    func deletePhotoFromMemes() {
+        let collectionVC = self.storyboard!.instantiateViewController(withIdentifier: "sentMemesCollectionView") as! sentMemesCollectionView
+        collectionVC.appDelegateObject.memes.remove(at: currentMemeIndex)
+        allMemes = collectionVC.appDelegateObject.memes
     }
     
 }

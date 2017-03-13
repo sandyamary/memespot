@@ -29,12 +29,10 @@ class sentMemesCollectionView: UICollectionViewController {
         flowLayout.itemSize = CGSize(width: widthDimension, height: heightDimension)
     }
 
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         self.memeCollectionView.reloadData()
-        
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -42,7 +40,6 @@ class sentMemesCollectionView: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! collectionViewCell        
         let memes = appDelegateObject.memes
         let sentMeme = memes[(indexPath as NSIndexPath).row]
@@ -53,7 +50,12 @@ class sentMemesCollectionView: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailController = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
         detailController.meme = appDelegateObject.memes[(indexPath as NSIndexPath).row]
+        detailController.currentMemeIndex = (indexPath as NSIndexPath).row
+        detailController.allMemes = appDelegateObject.memes
+        //delete print
+        print(detailController.allMemes)
         self.navigationController!.pushViewController(detailController, animated: true)
     }
+    
     
 }

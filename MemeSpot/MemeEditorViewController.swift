@@ -32,6 +32,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     func textViewDidBeginEditing(_ textView: UITextView) {
         topTextField.isHidden = false
         bottomTextField.isHidden = false
+        textView.tintColor = UIColor.clear
         textView.text = ""
         shareButton.isEnabled = false
         topTextField.becomeFirstResponder()
@@ -63,19 +64,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         textView.attributedText = defaultAttributes
         textView.textAlignment = .center
     }
-
-    
-    func customizeTextViewAttributes(textView: UITextView) {
-        let defaultAttributes = NSAttributedString(string: textView.text, attributes: memeTextAttributes)
-        textView.attributedText = defaultAttributes
-    }
     
     func customizeTextView(textView: UITextView, defaultText: String) {
         textView.text = defaultText
-        textView.adjustsFontForContentSizeCategory = true
+        let defaultAttributes = NSAttributedString(string: textView.text, attributes: memeTextAttributes)
+        textView.attributedText = defaultAttributes
         textView.textAlignment = .center
-        
-        customizeTextViewAttributes(textView: textView)
     }
     
     override func viewDidLoad() {
