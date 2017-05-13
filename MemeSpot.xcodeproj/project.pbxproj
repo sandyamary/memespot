@@ -45,6 +45,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A7048901EC69A5500736A1E /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				8A97F0BB1E6544AA000CD894 /* Assets.xcassets */,
+				8A97F0B81E6544AA000CD894 /* Main.storyboard */,
+				8A97F0BD1E6544AA000CD894 /* LaunchScreen.storyboard */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		8A7048911EC69A6E00736A1E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8A2F656F1E712F7300B05ABD /* NewMemeViewController.swift */,
+				8A2F65691E6F7F6300B05ABD /* sentMemesCollectionView.swift */,
+				8A2F656B1E6F808600B05ABD /* collectionViewCell.swift */,
+				8A2F656D1E6FF43D00B05ABD /* MemeDetailViewController.swift */,
+				8A97F0B61E6544AA000CD894 /* MemeEditorViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		8A7048921EC69A9500736A1E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8A2F65311E68C71000B05ABD /* Meme.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		8A97F0A81E6544AA000CD894 = {
 			isa = PBXGroup;
 			children = (
@@ -65,16 +95,10 @@
 			isa = PBXGroup;
 			children = (
 				8A97F0B41E6544AA000CD894 /* AppDelegate.swift */,
-				8A97F0B61E6544AA000CD894 /* MemeEditorViewController.swift */,
-				8A2F65311E68C71000B05ABD /* Meme.swift */,
-				8A97F0B81E6544AA000CD894 /* Main.storyboard */,
-				8A97F0BB1E6544AA000CD894 /* Assets.xcassets */,
-				8A97F0BD1E6544AA000CD894 /* LaunchScreen.storyboard */,
+				8A7048921EC69A9500736A1E /* Models */,
+				8A7048911EC69A6E00736A1E /* Controllers */,
+				8A7048901EC69A5500736A1E /* Assets */,
 				8A97F0C01E6544AA000CD894 /* Info.plist */,
-				8A2F65691E6F7F6300B05ABD /* sentMemesCollectionView.swift */,
-				8A2F656B1E6F808600B05ABD /* collectionViewCell.swift */,
-				8A2F656D1E6FF43D00B05ABD /* MemeDetailViewController.swift */,
-				8A2F656F1E712F7300B05ABD /* NewMemeViewController.swift */,
 			);
 			name = MemeSpot;
 			path = "MemeMe 1.0";
